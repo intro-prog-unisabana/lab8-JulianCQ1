@@ -19,11 +19,13 @@ Examples:
   python main.py tasks.txt view
   python main.py tasks.txt add "Call mom" remove "Take out trash" view""")
             return
+            
 
         todo_file_path = sys.argv[1]
         if len(sys.argv) < 3:
             return 
         tasks = read_todo_file(todo_file_path)
+        write_todo_file(todo_file_path, tasks)
         modified = False
         i = 2
         while i < len(sys.argv):
