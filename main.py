@@ -2,19 +2,24 @@ import sys
 from todo_manager import read_todo_file, write_todo_file
 def main():
     try:
-        if len(sys.argv) != 2:
+        if len(sys.argv) < 2:
             raise IndexError("Insufficient arguments provided!")
         todo_file_path = sys.argv[1]
+        if len(sys.argv) < 3:
+            return 
         
-        print("Command-line arguments:")
-        for arg in sys.argv:
-            print(arg)
-        print("Tasks:")
-        new_task = input("Enter a new task to add (or press Enter to skip): ")
-        if new_task:
+        command = sys.argv[2]
+        if command == "view":
+            print("tasks:")
             tasks = read_todo_file(todo_file_path)
             for task in tasks:
                 print(f"- {task}")
+
+        else:
+            raise ValueError("Command not found!")
+    except ValueError as e:
+        print(e)    
+
     except IndexError as e:
         print(e)
     except Exception as e:
