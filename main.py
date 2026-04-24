@@ -22,6 +22,17 @@ def main():
             tasks.append(new_task)
             write_todo_file(todo_file_path, tasks)
             print(f"Task '{new_task}' added.")
+        elif command == "remove":
+            if len(sys.argv)<4:
+                raise IndexError('Task description required for "remove".')
+            task_to_remove = sys.argv[3]
+            tasks = read_todo_file(todo_file_path)
+            try:
+                tasks.remove(task_to_remove)
+                write_todo_file(todo_file_path, tasks)
+                print(f"Task '{task_to_remove}' removed.")
+            except ValueError:
+                print(f"Task '{task_to_remove}' not found.")
         else:
             raise ValueError("Command not found!")
     except ValueError as e:
