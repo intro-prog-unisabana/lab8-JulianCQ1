@@ -1,7 +1,7 @@
 import sys
 try:
     if len(sys.argv) != 3:
-        raise ValueError
+        raise IndexError("Error: Two numeric arguments are required.")
     Argumento_uno = float(sys.argv[1])
     Argumento_dos = float(sys.argv[2])
 
@@ -13,3 +13,5 @@ try:
 except ValueError:
         print("Error: Invalid input! Enter numeric values only.")
 
+except Exception as e:
+        print(e)
