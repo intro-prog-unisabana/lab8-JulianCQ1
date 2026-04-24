@@ -14,7 +14,14 @@ def main():
             tasks = read_todo_file(todo_file_path)
             for task in tasks:
                 print(f"- {task}")
-
+        elif command == "add":
+            if len(sys.argv) < 4:
+                raise IndexError("No task provided to add!")
+            new_task = sys.argv[3]
+            tasks = read_todo_file(todo_file_path)
+            tasks.append(new_task)
+            write_todo_file(todo_file_path, tasks)
+            print(f"Task '{new_task}' added.")
         else:
             raise ValueError("Command not found!")
     except ValueError as e:
