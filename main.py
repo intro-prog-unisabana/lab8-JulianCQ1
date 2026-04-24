@@ -43,7 +43,7 @@ Examples:
                 print(f'Task "{new_task}" added.')
             elif command == "remove":
                 if i >= len(sys.argv):
-                    raise IndexError('Task description required for "add".')
+                    raise IndexError('Task description required for "remove".')
                 task_to_remove = sys.argv[i]
                 i += 1
                 try:
