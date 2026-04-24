@@ -30,9 +30,9 @@ Examples:
             command = sys.argv[i]
             i += 1
             if command == "view":
-                print("tasks:")
+                print("Tasks:")
                 for task in tasks:
-                    print(f"- {task}")
+                    print(f"{task}")
             elif command == "add":
                 if i >= len(sys.argv):
                     raise IndexError('Task description required for "add".')
@@ -40,18 +40,18 @@ Examples:
                 i += 1
                 tasks.append(new_task)
                 modified = True
-                print(f"Task '{new_task}' added.")
+                print(f'Task "{new_task}" added.')
             elif command == "remove":
                 if i >= len(sys.argv):
-                    raise IndexError('Task description required for "remove".')
+                    raise IndexError('Task description required for "add".')
                 task_to_remove = sys.argv[i]
                 i += 1
                 try:
                     tasks.remove(task_to_remove)
                     modified = True
-                    print(f"Task '{task_to_remove}' removed.")
+                    print(f'Task "{task_to_remove}" removed.')
                 except ValueError:
-                    print(f"Task '{task_to_remove}' not found.")
+                    print(f'Task "{task_to_remove}" not found.')
             else:
                 raise ValueError("Command not found!")
         if modified:
